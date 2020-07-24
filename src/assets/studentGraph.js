@@ -1,3 +1,4 @@
+// Dit was een gigantisch bestand, maar heb het weten te verkleinen tot deze instellingen.
 const studentGraph = {
   axis: {
     style: {
