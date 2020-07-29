@@ -11,7 +11,8 @@ import {
 } from "victory";
 
 import studentGraph from "../assets/studentGraph";
-
+// Victory charts worden hier gemaakt en in een groep gezet waardoor je de difficulty en enjoyment in 1 grafiek kan laten zien.
+// in theme kan je de instellingen van de groep aanpassen.
 function Chart({ assignmentRatingAverageWithLabels }) {
   return (
     <div className="chart-graphic">

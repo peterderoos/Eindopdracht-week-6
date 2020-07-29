@@ -26,7 +26,7 @@ function App() {
   );
 
   const getAssignments = [
-    ...new Set(studentData.map((x) => x.assignment)),
+    ...new Set(studentData.map((data) => data.assignment)),
   ].sort((assignment1, assignment2) => {
     if (assignment1 > assignment2) {
       return 1;
