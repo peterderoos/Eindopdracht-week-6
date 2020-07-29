@@ -22,12 +22,17 @@ function Student(props) {
   }));
 
   const DataIndividualStudent = objectStateData.filter(
-    (item) => item.student === props.newNames
+    (data) => data.student === props.newNames
   );
+
+  console.log(DataIndividualStudent);
   // Victory charts worden hier gemaakt en in een groep gezet waardoor je de difficulty en enjoyment in 1 grafiek kan laten zien.
   // in theme kan je de instellingen van de groep aanpassen.
   return (
     <div className="chart-graphic">
+      <h1>{props.student}</h1>
+      <p>Paars = moeilijk</p>
+      <p>Goud = leuk</p>
       <VictoryChart
         domainPadding={{ y: 10 }}
         theme={studentGraph}
@@ -37,15 +42,14 @@ function Student(props) {
           <VictoryBar
             labelComponent={<VictoryTooltip />}
             data={DataIndividualStudent}
-            x="assignment"
-            y="difficulty"
-            style={{ data: { fill: "#4768B8" } }}
+            x="Assignment"
+            y="Difficulty"
+            tickValues={[1, 2, 3, 4, 5]}
           />
           <VictoryBar
             data={DataIndividualStudent}
-            x="assignment"
-            y="enjoyment"
-            style={{ data: { fill: "#F5BA13" } }}
+            x="Assignment"
+            y="Enjoyment"
           />
         </VictoryGroup>
         <VictoryAxis
@@ -53,9 +57,9 @@ function Student(props) {
           tickFormat={props.Assignment}
           style={{
             tickLabels: {
-              fontSize: 5,
-              padding: 10,
-              writingMode: "vertical-lr",
+              angle: -45,
+              fontSize: 8,
+              padding: 8,
             },
           }}
         />
@@ -65,8 +69,8 @@ function Student(props) {
           tickFormat={[1, 2, 3, 4, 5]}
           style={{
             tickLabels: {
-              fontSize: 15,
-              padding: 10,
+              fontSize: 8,
+              padding: 8,
             },
           }}
         />
