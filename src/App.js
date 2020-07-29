@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import studentData from "./data/studentData";
 import StudentOverview from "./components/StudentOverview";
+import Student from "./components/Student";
 
 import "./App.css";
 
@@ -35,6 +36,28 @@ function App() {
     return 0;
   });
 
+  const getEnjoymentRatings = (student, assignment) => {
+    return studentData
+      .filter((item) => {
+        return item.student === student;
+      })
+      .filter((student) => {
+        return student.assignment === assignment;
+      })
+      .map((assignment) => assignment.enjoymentRating);
+  };
+
+  const getDifficultyRatings = (student, assignment) => {
+    return studentData
+      .filter((item) => {
+        return item.student === student;
+      })
+      .filter((student) => {
+        return student.assignment === assignment;
+      })
+      .map((assignment) => assignment.difficultyRating);
+  };
+
   return (
     <Router>
       <div className="app-container">
@@ -59,7 +82,14 @@ function App() {
                   exact
                   path={`/${student.replace(/\s/g, "-")}`}
                   key={student}
-                ></Route>
+                >
+                  <Student
+                    getStudentList={getStudentList}
+                    student={student}
+                    getEnjoymentRatings={getEnjoymentRatings}
+                    getDifficultyRatings={getDifficultyRatings}
+                  />
+                </Route>
               ))
             : null}
         </Switch>
