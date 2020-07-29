@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import studentData from "./data/studentData";
+import StudentOverview from "./components/StudentOverview";
 
 import "./App.css";
 
@@ -66,6 +67,12 @@ function App() {
               getStudentList={getStudentList}
               getAssignments={getAssignments}
               studentData={studentData}
+            />
+          </Route>
+          <Route path="/studentoverview">
+            <StudentOverview
+              getStudentList={getStudentList}
+              getAssignments={getAssignments}
             />
           </Route>
           {getStudentList
