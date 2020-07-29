@@ -9,18 +9,18 @@ import StudentOverview from "./components/StudentOverview";
 import "./App.css";
 
 function App() {
-  const getStudentList = [...new Set(studentData.map((x) => x.student))].sort(
-    (student1, student2) => {
-      if (student1 > student2) {
-        return 1;
-      } else if (student1 === student2) {
-        return 0;
-      } else if (student1 < student2) {
-        return -1;
-      }
+  const getStudentList = [
+    ...new Set(studentData.map((data) => data.student)),
+  ].sort((student1, student2) => {
+    if (student1 > student2) {
+      return 1;
+    } else if (student1 === student2) {
       return 0;
+    } else if (student1 < student2) {
+      return -1;
     }
-  );
+    return 0;
+  });
 
   const getAssignments = [
     ...new Set(studentData.map((data) => data.assignment)),
@@ -34,28 +34,6 @@ function App() {
     }
     return 0;
   });
-
-  const getEnjoymentRatings = (student, assignment) => {
-    return studentData
-      .filter((item) => {
-        return item.student === student;
-      })
-      .filter((student) => {
-        return student.assignment === assignment;
-      })
-      .map((assignment) => assignment.enjoymentRating);
-  };
-
-  const getDifficultyRatings = (student, assignment) => {
-    return studentData
-      .filter((item) => {
-        return item.student === student;
-      })
-      .filter((student) => {
-        return student.assignment === assignment;
-      })
-      .map((assignment) => assignment.difficultyRating);
-  };
 
   return (
     <Router>
