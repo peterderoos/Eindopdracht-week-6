@@ -9,6 +9,7 @@ import Student from "./components/Student";
 import "./App.css";
 
 function App() {
+  // Verkrijg de lijst van studenten
   const getStudentList = [
     ...new Set(studentData.map((data) => data.student)),
   ].sort((student1, student2) => {
@@ -21,7 +22,7 @@ function App() {
     }
     return 0;
   });
-
+  // Verkrijg de lijst van opdrachten
   const getAssignments = [
     ...new Set(studentData.map((data) => data.assignment)),
   ].sort((assignment1, assignment2) => {
@@ -35,11 +36,11 @@ function App() {
     return 0;
   });
 
-  // Verkrijg de rating van beide in 1 functie verwerkt en
+  // Verkrijg de rating van beide in 1 functie verwerkt
   const getRating = (student, assignment, rated) => {
     const selectedRating = studentData
-      .filter((item) => {
-        return item.student === student;
+      .filter((data) => {
+        return data.student === student;
       })
       .filter((student) => {
         return student.assignment === assignment;
@@ -70,21 +71,15 @@ function App() {
               getAssignments={getAssignments}
             />
           </Route>
-          {getStudentList
-            ? getStudentList.map((student) => (
-                <Route
-                  exact
-                  path={`/${student.replace(/\s/g, "-")}`}
-                  key={student}
-                >
-                  <Student
-                    getStudentList={getStudentList}
-                    student={student}
-                    getRating={getRating}
-                  />
-                </Route>
-              ))
-            : null}
+          {getStudentList.map((student) => (
+            <Route exact path={`/${student.replace(/\s/g, "-")}`} key={student}>
+              <Student
+                getStudentList={getStudentList}
+                student={student}
+                getRating={getRating}
+              />
+            </Route>
+          ))}
         </Switch>
         <Footer />
       </div>
