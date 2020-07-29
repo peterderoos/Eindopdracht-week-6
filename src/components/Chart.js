@@ -13,7 +13,7 @@ import {
 import studentGraph from "../assets/studentGraph";
 // Victory charts worden hier gemaakt en in een groep gezet waardoor je de difficulty en enjoyment in 1 grafiek kan laten zien.
 // in theme kan je de instellingen van de groep aanpassen.
-function Chart({ assignmentRatingAverageWithLabels }) {
+function Chart({ assignmentAverage }) {
   return (
     <div className="chart-graphic">
       <VictoryChart
@@ -24,21 +24,21 @@ function Chart({ assignmentRatingAverageWithLabels }) {
         <VictoryGroup offset={20}>
           <VictoryBar
             labelComponent={<VictoryTooltip />}
-            data={assignmentRatingAverageWithLabels}
+            data={assignmentAverage}
             x="assignment"
             y="difficultyRating"
             tickValues={[1, 2, 3, 4, 5]}
-            tickFormat={assignmentRatingAverageWithLabels.map(
+            tickFormat={assignmentAverage.map(
               (averages) => averages.assignment
             )}
           />
           <VictoryBar
             labelComponent={<VictoryTooltip />}
-            data={assignmentRatingAverageWithLabels}
+            data={assignmentAverage}
             x="assignment"
             y="enjoymentRating"
             tickValues={[1, 2, 3, 4, 5]}
-            tickFormat={assignmentRatingAverageWithLabels.map(
+            tickFormat={assignmentAverage.map(
               (averages) => averages.assignment
             )}
           />
@@ -46,9 +46,7 @@ function Chart({ assignmentRatingAverageWithLabels }) {
         <VictoryAxis
           style={{ tickLabels: { angle: -45 } }}
           tickValues={[1, 2, 3, 4, 5]}
-          tickFormat={assignmentRatingAverageWithLabels.map(
-            (averages) => averages.assignment
-          )}
+          tickFormat={assignmentAverage.map((averages) => averages.assignment)}
         />
         <VictoryAxis dependentAxis />
       </VictoryChart>
@@ -60,7 +58,7 @@ function Chart({ assignmentRatingAverageWithLabels }) {
             data: { stroke: "purple" },
             parent: { border: "1px solid #ccc" },
           }}
-          data={assignmentRatingAverageWithLabels}
+          data={assignmentAverage}
           x="assignment"
           y="difficultyRating"
         />
@@ -70,16 +68,14 @@ function Chart({ assignmentRatingAverageWithLabels }) {
             data: { stroke: "gold" },
             parent: { border: "1px solid #ccc" },
           }}
-          data={assignmentRatingAverageWithLabels}
+          data={assignmentAverage}
           x="assignment"
           y="enjoymentRating"
         />
         <VictoryAxis
           style={{ tickLabels: { angle: -45 } }}
           tickValues={[1, 2, 3, 4]}
-          tickFormat={assignmentRatingAverageWithLabels.map(
-            (averages) => averages.assignment
-          )}
+          tickFormat={assignmentAverage.map((averages) => averages.assignment)}
         />
         <VictoryAxis dependentAxis />
       </VictoryChart>

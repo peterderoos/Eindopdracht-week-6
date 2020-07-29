@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import studentData from "./data/studentData";
 import StudentOverview from "./components/StudentOverview";
 import Student from "./components/Student";
-
 import "./App.css";
 
 function App() {
@@ -36,26 +35,21 @@ function App() {
     return 0;
   });
 
-  const getEnjoymentRatings = (student, assignment) => {
-    return studentData
+  // Verkrijg de rating van beide in 1 functie verwerkt en
+  const getRating = (student, assignment, rated) => {
+    const selectedRating = studentData
       .filter((item) => {
         return item.student === student;
       })
       .filter((student) => {
         return student.assignment === assignment;
-      })
-      .map((assignment) => assignment.enjoymentRating);
-  };
-
-  const getDifficultyRatings = (student, assignment) => {
-    return studentData
-      .filter((item) => {
-        return item.student === student;
-      })
-      .filter((student) => {
-        return student.assignment === assignment;
-      })
-      .map((assignment) => assignment.difficultyRating);
+      });
+    if (rated === "enjoyment") {
+      return selectedRating[0].enjoymentRating;
+    }
+    if (rated === "difficulty") {
+      return selectedRating[0].difficultyRating;
+    }
   };
 
   return (
@@ -86,8 +80,7 @@ function App() {
                   <Student
                     getStudentList={getStudentList}
                     student={student}
-                    getEnjoymentRatings={getEnjoymentRatings}
-                    getDifficultyRatings={getDifficultyRatings}
+                    getRating={getRating}
                   />
                 </Route>
               ))

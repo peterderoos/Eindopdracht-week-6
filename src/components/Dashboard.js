@@ -5,10 +5,10 @@ import Chart from "./Chart";
 function Dashboard({ getStudentList, getAssignments, studentData }) {
   const getAverageDifficultyRating = (assignment) => {
     const getTotalDifficultyRating = studentData
-      .filter((item) => {
-        return item.assignment === assignment;
+      .filter((data) => {
+        return data.assignment === assignment;
       })
-      .map((item) => item.difficultyRating)
+      .map((data) => data.difficultyRating)
       .reduce((currentTotal, grading) => {
         return grading + currentTotal;
       }, 0);
@@ -17,32 +17,30 @@ function Dashboard({ getStudentList, getAssignments, studentData }) {
 
   const getAverageEnjoymentRating = (assignment) => {
     const getTotalEnjoymentRating = studentData
-      .filter((item) => {
-        return item.assignment === assignment;
+      .filter((data) => {
+        return data.assignment === assignment;
       })
-      .map((item) => item.enjoymentRating)
+      .map((data) => data.enjoymentRating)
       .reduce((currentTotal, grading) => {
         return grading + currentTotal;
       }, 0);
     return getTotalEnjoymentRating / getStudentList.length;
   };
 
-  const assignmentRatingAverageWithLabels = getAssignments.map((item) => ({
-    assignment: item,
-    difficultyRating: getAverageDifficultyRating(item),
-    enjoymentRating: getAverageEnjoymentRating(item),
-    label: `Difficulty Rating: ${getAverageDifficultyRating(item).toFixed(
+  const assignmentAverage = getAssignments.map((data) => ({
+    assignment: data,
+    difficultyRating: getAverageDifficultyRating(data),
+    enjoymentRating: getAverageEnjoymentRating(data),
+    label: `Difficulty Rating: ${getAverageDifficultyRating(data).toFixed(
       1
-    )} \n Enjoyment Rating: ${getAverageEnjoymentRating(item).toFixed(1)}`,
+    )} \n Enjoyment Rating: ${getAverageEnjoymentRating(data).toFixed(1)}`,
   }));
 
   return (
     <div className="component-container">
       <p>Paars = moeilijk</p>
       <p>Goud = leuk</p>
-      <Chart
-        assignmentRatingAverageWithLabels={assignmentRatingAverageWithLabels}
-      />
+      <Chart assignmentAverage={assignmentAverage} />
     </div>
   );
 }

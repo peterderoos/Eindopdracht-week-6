@@ -1,12 +1,7 @@
 import React from "react";
 import StudentContainer from "./StudentContainer";
 
-function Student({
-  student,
-  getEnjoymentRatings,
-  getDifficultyRatings,
-  getStudentList,
-}) {
+function Student({ student, getRating, getStudentList }) {
   return (
     <div>
       <h2>{student}</h2>
