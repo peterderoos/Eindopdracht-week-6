@@ -19,7 +19,7 @@ function Chart({ assignmentAverage }) {
       <VictoryChart
         domainPadding={{ y: 15 }}
         theme={studentGraph}
-        containerComponent={<VictoryZoomContainer />}
+        containerComponent={<VictoryZoomContainer allowZoom={false} />}
       >
         <VictoryGroup offset={20}>
           <VictoryBar
