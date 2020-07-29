@@ -56,7 +56,7 @@ function Chart({ assignmentAverage }) {
           labelComponent={<VictoryTooltip />}
           style={{
             data: { stroke: "purple" },
-            parent: { border: "1px solid #ccc" },
+            parent: { border: "10px solid #ccc" },
           }}
           data={assignmentAverage}
           x="assignment"

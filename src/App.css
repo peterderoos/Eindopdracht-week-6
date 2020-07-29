@@ -3,8 +3,12 @@ nav {
    font-weight: 200;
 }
 
-a {
+a, h1, a:hover, h1:hover {
    text-decoration: none;
+}
+
+h1, h2, h3, a, li {
+   color: purple;
 }
 
 .nav-bar-links {
@@ -14,6 +18,20 @@ a {
 
 button {
    outline: none;
+   background-color: gold;
+   margin: 15px;
+}
+
+button p {
+   margin: 0;
+}
+
+.btn-lg {
+   font-size: 2.25em;
+}
+
+button:hover {
+   background-color: purple;
 }
 
 footer {
@@ -23,6 +41,10 @@ footer {
 
 .app-container {
    text-align: center;
+}
+
+.student-grid-container {
+   height: 75vh;
 }
 
 .student-grid-container div {

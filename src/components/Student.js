@@ -13,26 +13,23 @@ import studentGraph from "../assets/studentGraph";
 
 function Student(props) {
   const [data] = useState(studentData);
-
-  const objectStateData = data.map((object) => ({
-    Name: object.student,
+  const studentStateData = data.map((object) => ({
+    student: object.student,
     Assignment: object.assignment,
     Difficulty: parseInt(object.difficultyRating),
     Enjoyment: parseInt(object.enjoymentRating),
   }));
 
-  const DataIndividualStudent = objectStateData.filter(
-    (data) => data.student === props.newNames
+  const DataIndividualStudent = studentStateData.filter(
+    (data) => data.student === props.student
   );
 
-  console.log(DataIndividualStudent);
   // Victory charts worden hier gemaakt en in een groep gezet waardoor je de difficulty en enjoyment in 1 grafiek kan laten zien.
   // in theme kan je de instellingen van de groep aanpassen.
   return (
     <div className="chart-graphic">
-      <h1>{props.student}</h1>
-      <p>Paars = moeilijk</p>
-      <p>Goud = leuk</p>
+      <h3>{props.student}</h3>
+      <p>Paars = moeilijk | Goud = leuk</p>
       <VictoryChart
         domainPadding={{ y: 10 }}
         theme={studentGraph}

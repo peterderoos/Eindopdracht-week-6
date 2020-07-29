@@ -4,7 +4,7 @@ import "../App.css";
 function Button({ student }) {
   return (
     <div>
-      <button className="student-tile" key={student}>
+      <button className="btn btn-lg" key={student}>
         <p>{student}</p>
       </button>
     </div>

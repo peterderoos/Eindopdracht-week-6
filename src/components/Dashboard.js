@@ -38,8 +38,7 @@ function Dashboard({ getStudentList, getAssignments, studentData }) {
 
   return (
     <div className="component-container">
-      <p>Paars = moeilijk</p>
-      <p>Goud = leuk</p>
+      <p>Paars = moeilijk | Goud = leuk</p>
       <Chart assignmentAverage={assignmentAverage} />
     </div>
   );
