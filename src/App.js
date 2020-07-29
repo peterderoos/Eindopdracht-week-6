@@ -1,12 +1,8 @@
 import React from "react";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import NavBar from "./components/NavBar";
-import StudentOverview from "./components/StudentOverview";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
-import StudentPage from "./components/StudentPage";
 import studentData from "./data/studentData";
 
 import "./App.css";
@@ -72,26 +68,13 @@ function App() {
               studentData={studentData}
             />
           </Route>
-          <Route path="/studentoverview">
-            <StudentOverview
-              getStudentList={getStudentList}
-              getAssignments={getAssignments}
-            />
-          </Route>
           {getStudentList
             ? getStudentList.map((student) => (
                 <Route
                   exact
                   path={`/${student.replace(/\s/g, "-")}`}
                   key={student}
-                >
-                  <StudentPage
-                    getStudentList={getStudentList}
-                    student={student}
-                    getEnjoymentRatings={getEnjoymentRatings}
-                    getDifficultyRatings={getDifficultyRatings}
-                  />
-                </Route>
+                ></Route>
               ))
             : null}
         </Switch>

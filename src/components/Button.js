@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-function StudentButton({ student }) {
+function Button({ student }) {
   return (
     <div>
       <button key={student}>
@@ -11,4 +11,4 @@ function StudentButton({ student }) {
   );
 }
 
-export default StudentButton;
+export default Button;
